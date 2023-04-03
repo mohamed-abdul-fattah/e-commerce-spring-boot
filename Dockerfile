@@ -1,0 +1,18 @@
+FROM openjdk:11
+
+ARG APP_USER_ID
+ARG APP_USER=spring
+ARG PROJECT_DIRECTORY=app
+ARG USER_HOME_DIR=/home/${APP_USER}
+ARG APP_PATH=${USER_HOME_DIR}/${PROJECT_DIRECTORY}
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN useradd -md ${USER_HOME_DIR} -u ${APP_USER_ID} -s /bin/bash ${APP_USER} && \
+    mkdir -p ${APP_PATH} && \
+    chown -R ${APP_USER}:${APP_USER} ${APP_PATH}
+
+EXPOSE 8080
+
+USER ${APP_USER}:${APP_USER}
+
+WORKDIR ${APP_PATH}

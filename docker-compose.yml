@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        APP_USER_ID: ${APP_USER_ID}
+    image: ecommerce:1.0.0
+    container_name: ecommerce_app
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    entrypoint: ["/home/spring/app/entrypoint.sh"]
+    command: ["mvnw", "spring-boot:run", "-e"]
+    volumes:
+      - .:/home/spring/app:cached
+      - ~/.ssh:/home/spring/.ssh
+      - ./mvnw:/usr/local/bin/mvnw
+
+  database:
+    image: mysql:8.0
+    container_name: ecommerce_database
+    hostname: ecommerce_database_host
+    environment:
+      MYSQL_DATABASE: dev
+      MYSQL_USER: spring_boot
+      MYSQL_PASSWORD: spring_boot_password
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
