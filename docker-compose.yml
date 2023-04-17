@@ -13,11 +13,12 @@ services:
     ports:
       - "8080:8080"
     entrypoint: ["/home/spring/app/entrypoint.sh"]
-    command: ["mvnw", "spring-boot:run", "-e"]
+    command: ["mvnw", "spring-boot:run"]
     volumes:
       - .:/home/spring/app:cached
       - ~/.ssh:/home/spring/.ssh
       - ./mvnw:/usr/local/bin/mvnw
+      - ./.m2:/home/spring/.m2
 
   database:
     image: mysql:8.0

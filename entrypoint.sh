@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
-mvnw clean package
+mvnw clean verify
 
 exec "$@"
