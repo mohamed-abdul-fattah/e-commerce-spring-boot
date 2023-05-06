@@ -26,10 +26,10 @@ services:
     container_name: ecommerce_database
     hostname: ecommerce_database_host
     environment:
-      MYSQL_DATABASE: dev
-      MYSQL_USER: spring_boot
-      MYSQL_PASSWORD: spring_boot_password
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT}
     ports:
       - "3306:3306"
     volumes:
