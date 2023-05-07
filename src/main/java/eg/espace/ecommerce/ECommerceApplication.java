@@ -3,6 +3,7 @@ package eg.espace.ecommerce;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+// CHECKSTYLE:OFF AbbreviationAsWordInName
 /**
  * This class is the main class of the application.
  */
@@ -18,3 +19,4 @@ public class ECommerceApplication {
   }
 
 }
+// CHECKSTYLE:ON AbbreviationAsWordInName
